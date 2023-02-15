@@ -1,6 +1,7 @@
 package com.bolsadeideas.springboot.form.app.models.domain;
 
 import java.util.Date;
+import java.util.List;
 
 //import javax.validation.Valid;
 import javax.validation.constraints.Email;
@@ -39,15 +40,16 @@ public class Usuario {
 	private String email;
 
 	private Integer cuenta;
-	
+
 	@NotNull
 	private Pais pais;
+
+	@NotEmpty
+	private List<Role> roles;
 
 	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaNacimiento;
-	
-	
 
 	public Pais getPais() {
 		return pais;
@@ -119,6 +121,14 @@ public class Usuario {
 
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 
 }
