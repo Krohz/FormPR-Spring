@@ -20,11 +20,21 @@
 			<label for="pais">Pais: </label>
 			<div>
 				<select id="pais" th:field="*{pais}">
-				<option value="">-- Seleccionar --</option>
-				<option th:each="pais: ${listaPaises}" th:text="${pais.nombre}" th:value="${pais.id}"></option>
+					<option value="">-- Seleccionar --</option>
+					<option th:each="pais: ${listaPaises}" th:text="${pais.nombre}"
+						th:value="${pais.id}"></option>
 				</select>
 			</div>
 			<div th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></div>
+		</div>
+
+		<div>
+			<label>Roles: </label>
+			<div th:each="role: ${listadoRolesString}">
+				<input type="checkbox" th:field="*{roles}" th:value="${role}">
+				<label th:text="${role}"></label>
+			</div>
+			<div th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}"></div>
 		</div>
 
 		<div>
