@@ -44,12 +44,12 @@ public class Usuario {
 	@NotNull
 	private Pais pais;
 
+	@NotEmpty
+	private List<Role> roles;
+
 	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaNacimiento;
-
-	@NotEmpty
-	private List<String> roles;
 
 	public Pais getPais() {
 		return pais;
@@ -123,11 +123,11 @@ public class Usuario {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	public List<String> getRoles() {
+	public List<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(List<String> roles) {
+	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
 
