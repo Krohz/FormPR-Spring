@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -109,6 +110,7 @@ public class FormController {
 		usuario.setNombre("Ej: Cristian");
 		usuario.setApellido("Ej: Kal");
 		usuario.setId("16.123.123-J");
+		usuario.setPais(new Pais(1, "PA", "Panamá"));
 		usuario.setHabilitar(true);
 		model.addAttribute("titulo", "Formulario - Usuarios");
 		model.addAttribute("usuario", usuario);
@@ -135,12 +137,12 @@ public class FormController {
 	// Version pro - Hace lo mismo que el codigo de arriba -
 	// Importante tener get-set en la clase usuario
 	@PostMapping("/form")
-	public String procesar(@Valid Usuario usuario, BindingResult result, Model model, SessionStatus status) {
+	public String procesar(@Valid Usuario usuario, BindingResult result, Model model) {
 
 		// validator.validate(usuario, result);
 
-		model.addAttribute("titulo", "Formulario - Resultado");
 		if (result.hasErrors()) {
+			model.addAttribute("titulo", "Formulario - Resultado");
 			/*
 			 * Map<String, String> errores = new HashMap<>();
 			 * result.getFieldErrors().forEach(err ->{ errores.put(err.getField(),
@@ -149,9 +151,14 @@ public class FormController {
 			 */
 			return "form";
 		}
-		model.addAttribute("usuario", usuario);
-		status.setComplete();
+		return "redirect:/ver";
+	}
+	
+	@GetMapping("/ver")
+	public String ver(@SessionAttribute(name="usuario", required = false) Usuario usuario,Model model, SessionStatus status) {
+		model.addAttribute("titulo", "Formulario - Resultado");
 
+		status.setComplete();
 		return "resultado";
 	}
 }
