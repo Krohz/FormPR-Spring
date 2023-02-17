@@ -156,6 +156,10 @@ public class FormController {
 	
 	@GetMapping("/ver")
 	public String ver(@SessionAttribute(name="usuario", required = false) Usuario usuario,Model model, SessionStatus status) {
+		
+		if(usuario==null) {
+			return "redirect:/form";
+		}
 		model.addAttribute("titulo", "Formulario - Resultado");
 
 		status.setComplete();
