@@ -51,6 +51,16 @@ public class Usuario {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaNacimiento;
 
+	private Boolean habilitar;
+
+	public Boolean getHabilitar() {
+		return habilitar;
+	}
+
+	public void setHabilitar(Boolean habilitar) {
+		this.habilitar = habilitar;
+	}
+
 	public Pais getPais() {
 		return pais;
 	}

@@ -9,6 +9,13 @@
 	<form th:action="@{/form}" method="post" th:object="${usuario}">
 
 		<div>
+			<label for="habilitar">Habilitar NewsPaper Semanal: </label>
+			<div>
+				<input type="checkbox" id="habilitar" th:field="*{habilitar}">
+			</div>
+		</div>
+
+		<div>
 			<label for="id">Identificador: </label>
 			<div>
 				<input type="text" id="id" th:field="*{id}">
