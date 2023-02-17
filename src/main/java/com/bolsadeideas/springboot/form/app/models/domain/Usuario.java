@@ -51,6 +51,27 @@ public class Usuario {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaNacimiento;
 
+	private Boolean habilitar;
+
+	@NotEmpty
+	private String genero;
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+	public Boolean getHabilitar() {
+		return habilitar;
+	}
+
+	public void setHabilitar(Boolean habilitar) {
+		this.habilitar = habilitar;
+	}
+
 	public Pais getPais() {
 		return pais;
 	}

@@ -9,6 +9,26 @@
 	<form th:action="@{/form}" method="post" th:object="${usuario}">
 
 		<div>
+			<label for="habilitar">Habilitar NewsPaper Semanal: </label>
+			<div>
+				<input type="checkbox" id="habilitar" th:field="*{habilitar}">
+			</div>
+		</div>
+
+		<div>
+			<label>Genero</label>
+			<div>
+				<label for="genero1">Hombre</label> <input type="radio" id="genero1"
+					th:field="*{genero}" value="Hombre">
+			</div>
+			<div>
+				<label for="genero2">Mujer</label> <input type="radio" id="genero2"
+					th:field="*{genero}" value="Mujer">
+			</div>
+			<div th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></div>
+		</div>
+
+		<div>
 			<label for="id">Identificador: </label>
 			<div>
 				<input type="text" id="id" th:field="*{id}">
